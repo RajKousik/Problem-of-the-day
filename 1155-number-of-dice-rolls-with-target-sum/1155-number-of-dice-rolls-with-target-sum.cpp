@@ -54,13 +54,13 @@ public:
         
 //         long long ans = 0;
         
-//         for(int num = 1; num <= n; num++)
+//         for(int dice = 1; dice <= n; dice++)
 //         {
 //             for(int tar = 1; tar <= target; tar++)
 //             {
-//                 for(int i=1; i<=k and tar - i >= 0 ; i++)
+//                 for(int roll=1; roll <= k and tar - roll >= 0 ; roll++)
 //                 {
-//                     dp[num][tar] += (dp[num-1][tar-i] % mod);
+//                     dp[dice][tar] += (dp[dice-1][tar-roll] % mod);
 //                 }
 //             }
 //         }
@@ -69,6 +69,7 @@ public:
         
 //     }
     
+    //Space Optimized Approach
     int numRollsToTarget(int n, int k, int target) {
         
         vector<long long> prev(target+1, 0);
@@ -78,17 +79,21 @@ public:
         
         long long ans = 0;
         
-        for(int num = 1; num <= n; num++)
+        for(int dice = 1; dice <= n; dice++)
         {
-            for(int tar = 1; tar <= target; tar++)
+            
+            for(int t = 1; t <= target; t++)
             {
+                
                 ans = 0;
-                for(int i=1; i<=k and tar - i >= 0 ; i++)
+                for(int roll = 1; roll <= k and t - roll >= 0; roll++)
                 {
-                    ans += (prev[tar-i] % mod);
+                    ans += (prev[t-roll] % mod);
                 }
-                curr[tar] = ans % mod;
+                curr[t] = ans % mod;
+                
             }
+            
             prev = curr;
         }
         
