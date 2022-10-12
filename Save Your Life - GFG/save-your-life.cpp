@@ -30,7 +30,22 @@ public:
               
                 if(mp.find(w[i]) != mp.end())
                 {
-                    maxTillNow += mp[w[i]];
+                    // maxTillNow += mp[w[i]];
+                    // temp += w[i];
+                    
+                    // if(maxTillNow > globalMax)
+                    // {
+                    //     ans = temp;
+                    //     globalMax = maxTillNow;
+                    // }
+                    
+                    // if(maxTillNow < 0)
+                    // {
+                    //     maxTillNow = 0;
+                    //     temp = "";
+                    // }
+                    
+                    maxTillNow = max(maxTillNow + mp[w[i]], mp[w[i]]);
                     temp += w[i];
                     
                     if(maxTillNow > globalMax)
@@ -47,7 +62,7 @@ public:
                 }
                 else
                 {
-                    maxTillNow += (int)w[i];
+                    maxTillNow = max(maxTillNow + (int)w[i], (int)w[i]);
                     temp += w[i];
                     
                     if(maxTillNow > globalMax)
