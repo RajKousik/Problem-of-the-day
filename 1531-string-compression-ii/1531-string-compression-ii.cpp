@@ -1,7 +1,9 @@
 class Solution {
 public:
     
-    const int MAX = 127;
+    //not using INT_MAX as we r doing INT_MAX + some value, which will give Runtime Error
+    //max value
+    const int MAX = 100;
     
     inline int find_len(int x)
     {
