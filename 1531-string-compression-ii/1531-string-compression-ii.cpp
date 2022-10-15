@@ -3,7 +3,7 @@ public:
     
     //not using INT_MAX as we r doing INT_MAX + some value, which will give Runtime Error
     //max value
-    const int MAX = 99;   
+    const int MAX = 101;   
     
     //finding the length of the x
     // for example a12, here 12 is the x
