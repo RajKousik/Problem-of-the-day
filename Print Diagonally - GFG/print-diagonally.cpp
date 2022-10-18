@@ -9,16 +9,21 @@ class Solution{
 	vector<int> downwardDigonal(int N, vector<vector<int>> A)
 	{
 		// Your code goes here
+		
+		//trick -> go for uppper side first, and go lower triangle
+		
 		vector<int> ans;
 		
 		int n = A.size();
 		
+		//upper triangle
+		//observe which one is constant here
 		for(int i=0; i<n; i++)
 		{
-		    int start = 0;
-		    int end = i;
+		    int start = 0;     //starting value's row is always constant, that is 0
+		    int end = i;        //incrementing the start and decrementing the end will give the upper triangle
 		    
-		    while(start < n and end >= 0)
+		    while(start < n and end >= 0)   //boundary cases
 		    {
 		        ans.push_back(A[start][end]);
 		        start++;
@@ -26,12 +31,13 @@ class Solution{
 		    }
 		}
 		
+		//lower triangle
 		for(int i=1; i<n; i++)
 		{
-		    int start = i;
-		    int end = n-1;
+		    int start = i;      //starting row is always i
+		    int end = n-1;      //starting column is always n-1
 		    
-		    while(start < n and end >= 0)
+		    while(start < n and end >= 0)   //boundary cases
 		    {
 		        ans.push_back(A[start][end]);
 		        start++;
