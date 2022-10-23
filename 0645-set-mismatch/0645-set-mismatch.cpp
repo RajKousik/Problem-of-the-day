@@ -11,7 +11,7 @@ public:
         }
         
         int dup=-1, miss=-1;
-        for(int i=0; i<nums.size(); i++)
+        for(int i=0; i<n; i++)
         {
             if(freq[i+1] == 2)
             {
