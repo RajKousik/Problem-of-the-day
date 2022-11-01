@@ -10,38 +10,47 @@ using namespace std;
 
 class Solution{   
 public:
-    int median(vector<vector<int>> &matrix, int r, int c){
+    int median(vector<vector<int>> &mat, int r, int c){
         // code here          
-         int start_val = 0,end_val = 2000;
-      
-      while(start_val <= end_val)
-      {
-         int centre_val = (start_val + end_val)/2;
-         int count=0;
-         int n = r*c;
-         for(int i=0;i<r;i++)
-         {
-             int l=0,h=c-1;
-             while(l<=h)
-             {
-                   int mid = l + (h-l)/2;
-                   
-                   if(matrix[i][mid] <= centre_val)
-                   l = mid+1;
-                   
-                   else
-                   h = mid-1;
-             }
-             count = count + l;
-         }
-         
-         if( count > n/2 )
-           end_val = centre_val-1;
-         else
-           start_val = centre_val+1;
-      }
-      
-      return start_val;
+         int low=INT_MAX;
+        int high=INT_MIN;
+        int ans;
+        
+        for(int i=0; i<r; i++)
+        {
+            low = min(low, mat[i][0]);
+            high = max(high, mat[i][c-1]);
+        }
+        
+        int noOfElements = (r * c + 1)/2;
+        // the median should have atleast n/2 elements on its left 
+        
+        
+        while(low < high)
+        {
+            
+            int mid = low + (high - low)/2;
+            
+            int elements_in_this_row = 0;
+            
+            for(int i=0; i<r; i++)
+            {
+                 elements_in_this_row += upper_bound(mat[i].begin(), mat[i].end(), mid) - mat[i].begin();
+            }
+            
+            if(elements_in_this_row < noOfElements)
+            {
+                low = mid + 1;
+            }
+            else
+            {   
+                // ans = mid;
+                high = mid;
+            }
+            
+        }
+        
+        return low;
     }
 };
 
