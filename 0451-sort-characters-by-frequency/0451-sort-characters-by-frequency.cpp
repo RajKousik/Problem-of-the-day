@@ -25,10 +25,12 @@ public:
             int freq = node.first;
             char ch = node.second;
             
-            for(int i=0; i<freq; i++)
-            {
-                ans.push_back(ch);
-            }
+            // for(int i=0; i<freq; i++)
+            // {
+            //     ans.push_back(ch);
+            // }
+            
+            ans += string(freq, ch);
             
         }
         
