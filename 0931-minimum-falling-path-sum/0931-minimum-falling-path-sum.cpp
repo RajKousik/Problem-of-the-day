@@ -6,7 +6,7 @@ public:
         
         if(i<0 or i>=n or j<0 or j>=n)
         {
-            return 1e6;
+            return 1e5;
         }
         
         if(dp[i][j] != -1)
@@ -19,13 +19,13 @@ public:
             return matrix[i][j];
         }
         
-        int down = matrix[i][j] + dfs(i+1, j, matrix, n, dp);
+        int down = dfs(i+1, j, matrix, n, dp);
         
-        int downLeft = matrix[i][j] + dfs(i+1, j-1, matrix, n, dp);   
+        int downLeft = dfs(i+1, j-1, matrix, n, dp);   
        
-        int downRight = matrix[i][j] + dfs(i+1, j+1, matrix, n, dp);   
+        int downRight = dfs(i+1, j+1, matrix, n, dp);   
         
-        return dp[i][j] = min(down, min(downLeft, downRight));
+        return dp[i][j] = matrix[i][j] + min(down, min(downLeft, downRight));
         
     }
     
@@ -33,7 +33,7 @@ public:
         
         int n = matrix.size();
         
-        int ans = 1e6;
+        int ans = 1e5;
         
         vector<vector<int>> dp(n, vector<int>(n, -1));
         
