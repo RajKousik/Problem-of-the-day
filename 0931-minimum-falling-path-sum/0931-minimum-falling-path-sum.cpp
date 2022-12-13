@@ -6,7 +6,8 @@ public:
         
         if(i<0 or i>=n or j<0 or j>=n)
         {
-            return 1e5;
+            return 1e5;     //as max no of n is 100, and max value is 100, so max sum will be 10000. so we to have choose greater than 10^4, so we have taken 10^5.
+            //see Constraints
         }
         
         if(dp[i][j] != -1)
@@ -34,7 +35,7 @@ public:
         int n = matrix.size();
         
         int ans = 1e5;
-        
+    
         vector<vector<int>> dp(n, vector<int>(n, -1));
         
         for(int j=0; j<n; j++)
