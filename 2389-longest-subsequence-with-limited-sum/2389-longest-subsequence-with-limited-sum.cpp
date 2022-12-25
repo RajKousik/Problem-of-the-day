@@ -45,7 +45,9 @@ public:
         for(auto ele : queries)
         {
             
-            auto it = upper_bound(prefix.begin(), prefix.end(), ele) - prefix.begin();
+            // auto it = upper_bound(prefix.begin(), prefix.end(), ele) - prefix.begin();
+            
+            int it = find(prefix, ele);
             
             ans.push_back(it);
             
