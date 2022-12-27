@@ -20,6 +20,10 @@ public:
                 additionalRocks -= diff[i];
                 bags++;
             }
+            else
+            {
+                break;
+            }
         }
         
         return bags;
