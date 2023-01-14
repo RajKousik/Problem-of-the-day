@@ -4,7 +4,7 @@ public:
         
         unordered_map<int, int> umap;
         
-        umap[0] = 1;
+        // umap[0] = 1;
         
         int sum = 0;
         
@@ -13,6 +13,8 @@ public:
         for(auto it : nums)
         {
             sum += it;
+            
+            if(sum == k) ans++;
             
             if(umap.find(sum - k) != umap.end())
             {
