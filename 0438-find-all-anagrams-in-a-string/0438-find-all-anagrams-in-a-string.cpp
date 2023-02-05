@@ -1,4 +1,19 @@
-class Solution {
+class Solution 
+{
+
+private:
+     bool isEqual(vector<int> &a, vector<int> &b)
+     {
+         for(int i=0; i<26; i++)
+         {
+             if(a[i] != b[i])
+             {
+                 return false;
+             }
+         }
+         return true;
+     }
+    
 public:
     vector<int> findAnagrams(string s, string p) {
         
@@ -31,7 +46,7 @@ public:
             window[s[i]-'a']++;
             window[s[i-pLen]-'a']--;
             
-            if(freq == window)
+            if(isEqual(freq, window))
             {
                 ans.push_back(i - pLen + 1);
             }
