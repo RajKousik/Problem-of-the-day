@@ -11,7 +11,8 @@
  */
 class Solution {
 public:
-    TreeNode* prevNode;
+    // TreeNode* prevNode;
+    int prevNode = -1;
     
     void inorderTraversal(TreeNode* root, int &ans)
     {
@@ -22,11 +23,11 @@ public:
         
         inorderTraversal(root->left, ans);
         
-        if(prevNode != NULL)
+        if(prevNode != -1)
         {
-            ans = min(ans, (root->val - prevNode->val));
+            ans = min(ans, (root->val - prevNode));
         }
-        prevNode = root;
+        prevNode = root->val;
         
         inorderTraversal(root->right, ans);
         
