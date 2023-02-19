@@ -20,35 +20,39 @@ public:
         queue<TreeNode*> q;
         q.push(root);
         
-        int levelNumber = 0;  
+        int level = 0;
         
         while(!q.empty())
         {
             int size = q.size();
-            vector<int> level;
+            vector<int> temp;
             
             while(size--)
             {
-                auto curr = q.front();
+                auto it = q.front();
                 q.pop();
+                    
+                temp.push_back(it->val);
                 
-                level.push_back(curr->val);
-                
-                if(curr->left)
+                if(it->left)
                 {
-                    q.push(curr->left);
+                    q.push(it->left);
                 }
-                if(curr->right)
+                
+                if(it->right)
                 {
-                    q.push(curr->right);
+                    q.push(it->right);
                 }
             }
-            if(levelNumber % 2)
+            
+            if(level % 2)
             {
-                reverse(level.begin(), level.end());
+                reverse(temp.begin(), temp.end());
             }
-            ans.push_back(level);
-            levelNumber++;
+            
+            ans.push_back(temp);
+            level++;
+            
         }
         return ans;
     }
