@@ -6,10 +6,10 @@ class compare
         
         if(a.first == b.first)
         {
-            return a.second > b.second;
+            return a.second > b.second;     //when i have to swap during sorting
         }
         
-        return a.first < b.first; 
+        return a.first < b.first;   //when i have to swap during sorting
     }
 };
 
@@ -47,7 +47,7 @@ public:
                     j++;
                 }
                 
-                cout<<word<<" ";
+                // cout<<word<<" ";
                 
                 if(pos.find(word) != pos.end())
                 {
@@ -64,9 +64,8 @@ public:
         
         vector<int> ans;
 
-        while(k--)
+        while(k-- and !pq.empty())
         {
-            cout<<pq.top().first<<endl;
             ans.push_back(pq.top().second);
             pq.pop();
         }
