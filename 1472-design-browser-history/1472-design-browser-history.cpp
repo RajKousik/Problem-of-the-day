@@ -1,3 +1,4 @@
+/*
 class linkedListNode
 {
 public:
@@ -53,6 +54,51 @@ public:
             steps--;
         }
         return current->data;
+    }
+};
+
+*/
+
+class BrowserHistory 
+{
+private:
+    vector<string> history;
+    int currentInd, lastInd;
+public:
+    BrowserHistory(string homepage) 
+    {
+        history.push_back(homepage);
+        currentInd = 0;
+        lastInd = 0;
+    }
+    
+    void visit(string url) 
+    {
+        currentInd += 1;
+        
+        if(history.size() > currentInd)
+        {
+            history[currentInd] = url;
+        }
+        else
+        {
+            history.push_back(url);
+        }
+        
+        lastInd = currentInd;
+        
+    }
+    
+    string back(int steps) 
+    {
+        currentInd = max(0, currentInd - steps);
+        return history[currentInd];
+    }
+    
+    string forward(int steps) 
+    {
+        currentInd = min(lastInd, currentInd + steps);
+        return history[currentInd];
     }
 };
 
