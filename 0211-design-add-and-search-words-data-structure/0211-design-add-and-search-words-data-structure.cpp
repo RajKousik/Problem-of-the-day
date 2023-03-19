@@ -2,8 +2,7 @@ class TrieNode
 {
 public:
     TrieNode* links[26];
-    bool isEnd;
-    
+    bool isEnd; 
 };
 
 
@@ -41,7 +40,7 @@ private:
             
         }
         
-        return rootNode and rootNode->isEnd;
+        return rootNode->isEnd;
     }
     
 public:
