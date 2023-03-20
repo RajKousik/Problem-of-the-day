@@ -28,6 +28,10 @@ public:
             {
                 cnt++;
                 flowerbed[i] = 1;
+                if(cnt >= n)
+                {
+                    return true;
+                }
             }
         }
         return cnt >= n;
