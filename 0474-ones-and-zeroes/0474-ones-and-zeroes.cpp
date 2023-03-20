@@ -50,35 +50,47 @@ public:
     
     int findMaxForm(vector<string>& strs, int m, int n) 
     {
-        int s = strs.size();
-        vector<vector<int>> dp(m+1, vector<int>(n+1, 0));
         
-        for(string temp : strs)
+        int s = strs.size();
+        vector<vector<vector<int>>> dp(s+1, vector<vector<int>>(m+1, vector<int>(n+1, 0)));
+        
+        for(int ind=0; ind<s; ind++)
         {
-            int zerosInString = 0, onesInString = 0;
-            for(auto it : temp)
+            for(int zeros=0; zeros<=m; zeros++)
             {
-                if(it == '0')
+                for(int ones=0; ones<=n; ones++)
                 {
-                    zerosInString++;
-                }
-                else
-                {
-                    onesInString++;
-                }
-            }
-
-            for(int zeros = m; zeros >= zerosInString; zeros--)
-            {
-                for(int ones = n; ones >= onesInString; ones--)
-                {
-                    dp[zeros][ones] = max(dp[zeros][ones], 1 + dp[zeros - zerosInString][ones - onesInString] );
+                    
+                    int zerosInString = 0, onesInString = 0;
+                    
+                    //this also works
+                    // int zerosInString = count(strs[i].begin(), strs[i].end(), '0');
+                    
+                    for(auto it : strs[ind])
+                    {
+                        if(it == '0')
+                        {
+                            zerosInString++;
+                        }
+                        else
+                        {
+                            onesInString++;
+                        }
+                    }
+                    
+                    int res = dp[ind][zeros][ones];
+                    if(zerosInString <= zeros and onesInString <= ones)
+                    {
+                        res = max(res, 1 + dp[ind][zeros - zerosInString][ones - onesInString]);
+                    }
+                    dp[ind+1][zeros][ones] = res;              
+                    
                 }
             }
         }
         
         
-        return dp[m][n];
+        return dp[s][m][n];
         
     }
     
