@@ -38,20 +38,20 @@ class Solution {
     }
     
     
-    void dfs(int node,vector<vector<pair<int, int>>> &adj, int n, int &ans, vector<int> &vis)
-    {
-        vis[node] = true;
+//     void dfs(int node,vector<vector<pair<int, int>>> &adj, int n, int &ans, vector<int> &vis)
+//     {
+//         vis[node] = true;
         
-        for(auto it : adj[node])
-        {
-            ans = min(ans, it.second);
-            if(!vis[it.first])
-            {
-                dfs(it.first, adj, n, ans, vis);
-            }
-        }
+//         for(auto it : adj[node])
+//         {
+//             ans = min(ans, it.second);
+//             if(!vis[it.first])
+//             {
+//                 dfs(it.first, adj, n, ans, vis);
+//             }
+//         }
         
-    }
+//     }
     
 public:
     int minScore(int n, vector<vector<int>>& roads)
@@ -74,13 +74,12 @@ public:
             adj[it[1]].push_back({it[0], it[2]});      //bi-directional road
         }
         
-        // return bfs(adj, n);
+        return bfs(adj, n);
         
-        vector<int> vis(n+1, false);
-        // vis[1] = true;
-        int ans = INT_MAX;
-        dfs(1, adj, n, ans, vis);
+//         vector<int> vis(n+1, false);
+//         int ans = INT_MAX;
+//         dfs(1, adj, n, ans, vis);
         
-        return ans;
+//         return ans;
     }
 };
