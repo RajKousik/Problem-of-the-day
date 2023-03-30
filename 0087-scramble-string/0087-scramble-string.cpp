@@ -20,7 +20,7 @@ public:
                 for(int j = 0; j < n + 1 - length; j++)
                 {
                     
-                    for(int newLength = 1; newLength < length; newLength++)
+                    for(int newLength = 1; newLength < length and !dp[length][i][j]; newLength++)
                     {
                         
                         bool noSwap = dp[newLength][i][j] and dp[length - newLength][i + newLength][j + newLength];
