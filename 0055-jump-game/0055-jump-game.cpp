@@ -8,16 +8,15 @@ public:
         
         if(n == 1) return true;
         
-        for(int i=0; i<n; i++)
+        for(int i=0; i<n and i <= ans; i++)
         {
-            if(ans >= i)
+
+            ans = max(ans, i + nums[i]);
+            if(ans >= n-1)
             {
-                ans = max(ans, i + nums[i]);
-                if(ans >= n-1)
-                {
-                    return true;
-                }
+                return true;
             }
+
             
         }
         
