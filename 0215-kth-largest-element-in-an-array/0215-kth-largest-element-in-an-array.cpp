@@ -20,7 +20,7 @@ public:
             pq.push(it);
         }
         
-        for(int i=0; i<k-1; i++)
+        while(--k)
         {
             pq.pop();
         }
