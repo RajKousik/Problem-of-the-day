@@ -20,7 +20,7 @@ public:
         sum = sum - maxi - mini;
         
         double ans = 0;
-        ans = (double)(sum * 1.0) / (n-2);
+        ans = (sum * 1.0) / (n-2);
         return ans;
     }
 };
