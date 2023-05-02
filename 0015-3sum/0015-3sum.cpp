@@ -1,58 +1,56 @@
 class Solution {
 public:
-    vector<vector<int>> threeSum(vector<int>& nums) {
-        
+    vector<vector<int>> threeSum(vector<int>& nums) 
+    {
         sort(nums.begin(), nums.end());
         
+        int n = nums.size();
         vector<vector<int>> ans;
         
-        int n = nums.size();
-        
-        for(int i=0; i<n-2; i++)
+        for(int i=0; i<n; i++)
         {
             
-            int low = i + 1;
-            int high = n - 1;
+            int j = i + 1;
+            int k = n - 1;
             
-            int target = nums[i];
-            
-            while(low < high)
+            while(j < k)
             {
-                
-                if(target + nums[low] + nums[high] == 0)
+                int sum = nums[i] + nums[j] + nums[k];
+                if(sum == 0)
                 {
-                    ans.push_back({target, nums[low], nums[high]});
-                    while(low + 1 < n and nums[low] == nums[low+1])
+                    
+                    ans.push_back({nums[i], nums[j], nums[k]});
+                    
+                    while((j + 1 < n) and (nums[j] == nums[j+1]))
                     {
-                        low++;
+                        j++;
                     }
-                    while(high - 1 >=0 and nums[high] == nums[high-1])
+                    while((k-1>=0) and (nums[k] == nums[k-1]))
                     {
-                        high--;
+                        k--;
                     }
-                    low++;
-                    high--;
+                    
+                    j++;
+                    k--;
+                    
+                    
                 }
-                else if(target + nums[low] + nums[high] < 0)
+                else if(sum < 0)
                 {
-                    low++;
+                    j++;
                 }
                 else
                 {
-                    high--;
+                    k--;
                 }
-                
-                
-                
             }
             
-            while(i + 1< n and nums[i] == nums[i+1])
+            while((i + 1 < n) and (nums[i] == nums[i+1]))
             {
                 i++;
             }
             
         }
-        
         return ans;
     }
 };
