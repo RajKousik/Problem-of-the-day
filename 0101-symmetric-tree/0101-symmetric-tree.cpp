@@ -19,12 +19,10 @@ public:
     }
     
     bool helper(TreeNode* l,TreeNode* r){
-        if(l==NULL && r==NULL)
+        if(l==NULL and r==NULL)
             return true;
-        if(l!=NULL && r!=NULL){
-            return (l->val==r->val) && helper(l->left,r->right) && helper(l->right,r->left);
-        }
-        else
+        if(l==NULL or r==NULL)
             return false;
+        return (l->val==r->val) && helper(l->left,r->right) && helper(l->right,r->left);
     }
 };
