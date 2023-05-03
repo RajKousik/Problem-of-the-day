@@ -5,10 +5,7 @@ public:
         sort(intervals.begin(), intervals.end());
         
         vector<vector<int>> ans;
-        
         vector<int> temp = intervals[0];
-        
-        int n = intervals.size();
         
         for(auto it : intervals)
         {
@@ -22,9 +19,7 @@ public:
                 temp = it;
             }
         }
-        
         ans.push_back(temp);
-        
         return ans;
         
     }
