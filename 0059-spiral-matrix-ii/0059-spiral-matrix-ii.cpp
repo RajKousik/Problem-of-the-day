@@ -1,48 +1,49 @@
 class Solution {
 public:
-    vector<vector<int>> generateMatrix(int n) {
+    vector<vector<int>> generateMatrix(int n) 
+    {
         
-        
-        vector<vector<int>> ans(n, vector<int>(n, -1));
-        
-        int l = 0, r = n - 1;
-        int t = 0, b = n - 1;
+        vector<vector<int>> spiralMatrix(n, vector<int>(n, -1));
         
         int cnt = 1;
+        int left = 0, right = n-1;
+        int top = 0, bottom = n-1;
         
-        while(cnt <= n*n)
+        while(cnt <= n * n)
         {
-            for(int i=l; cnt <= n*n and i<=r; i++)
-            {
-                ans[t][i] = cnt;
-                cnt++;
-            }
-            t++;
             
-            for(int i=t; cnt <= n*n and i<=b; i++)
+            for(int i=left ; cnt <= n * n and i<=right; i++)
             {
-                ans[i][r] = cnt;
+                spiralMatrix[top][i] = cnt;
                 cnt++;
             }
-            r--;
+            top++;
             
-            for(int i=r; cnt <= n*n and i>=l; i--)
+            for(int i=top; cnt <= n * n and i <= bottom; i++)
             {
-                ans[b][i] = cnt;
+                spiralMatrix[i][right] = cnt;
                 cnt++;
             }
-            b--;
+            right--;
             
-            for(int i=b; cnt <= n*n and i>=t; i--)
+            for(int i=right; cnt <= n * n and i>=left; i--)
             {
-                ans[i][l] = cnt;
+                spiralMatrix[bottom][i] = cnt;
                 cnt++;
             }
-            l++;
-            // break;
+            bottom--;
+            
+            for(int i=bottom; cnt<=n*n and i>=top; i--)
+            {
+                spiralMatrix[i][left] = cnt;
+                cnt++;
+            }
+            left++;
+            
         }
         
-        return ans;
-    
+        return spiralMatrix;
+        
+        
     }
 };
