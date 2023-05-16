@@ -10,20 +10,43 @@
  */
 class Solution {
 public:
-    ListNode* swapPairs(ListNode* head) {
+//     ListNode* swapPairs(ListNode* head) {
         
-        if(head == NULL or head->next == NULL)
-        {
-            return head;
-        }
+//         if(head == NULL or head->next == NULL)
+//         {
+//             return head;
+//         }
         
-        ListNode* temp = head->next;
+//         ListNode* temp = head->next;
         
-        head->next = swapPairs(temp->next);
+//         head->next = swapPairs(temp->next);
         
-        temp->next = head;
+//         temp->next = head;
         
-        return temp;
+//         return temp;
         
-    }
+//     }
+    
+     ListNode* swapPairs(ListNode* head) 
+     {
+         if(!head or !head->next) return head;
+         
+         ListNode* dummyNode = new ListNode(-1);
+         ListNode* curr = head;
+         
+         ListNode* prev = dummyNode;
+         
+         while(curr and curr->next)
+         {
+             prev->next = curr->next;
+             curr->next = prev->next->next;
+             prev->next->next = curr;
+             
+             prev = curr;
+             curr = curr->next;
+             
+         }
+         
+         return dummyNode->next;
+     }
 };
