@@ -31,12 +31,14 @@ public:
         
         long long answer = topKSum * pairs[k-1].second;
         
-        for(int i=k;i<n;i++)
+        for(int i=k; i<n; i++)
         {
             topKSum += (pairs[i].first - pq.top());
             pq.pop();
             pq.push(pairs[i].first);
-            answer = max(answer,topKSum*pairs[i].second);
+
+            
+            answer = max(answer, topKSum * pairs[i].second);
         }
         
         return answer;
