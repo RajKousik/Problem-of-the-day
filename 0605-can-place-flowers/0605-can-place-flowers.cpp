@@ -8,7 +8,7 @@ public:
         
         if(s == 1)
         {
-            return flowerbed[0] == 0 ? cnt+1 >= n : cnt>=n;
+            return flowerbed[0] == 0 ? n<=1 : n==0;
         }
         
         if(flowerbed[0] == 0 and flowerbed[1] == 0)
