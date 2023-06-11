@@ -8,22 +8,22 @@ public:
         {
             bool isCollided = false;
             
-            while(!st.empty() and st.top() > 0 and asteroid < 0)
+            while(!st.empty() and (st.top() > 0 and asteroid < 0))
             {
                 
                 if(abs(st.top()) < abs(asteroid))
                 {
                     st.pop();
-                    continue;
                 }
-                
-                else if(abs(st.top()) == abs(asteroid))
+                else
                 {
-                    st.pop();
-                }
-                
-                isCollided = true;
-                break;
+                    if(abs(st.top()) == abs(asteroid))
+                    {
+                        st.pop();
+                    }
+                    isCollided = true;
+                    break;
+                }   
             }
             
             if(!isCollided)
