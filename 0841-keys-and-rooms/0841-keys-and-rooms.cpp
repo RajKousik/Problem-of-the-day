@@ -4,35 +4,33 @@ public:
         
         int n = rooms.size();
         
-        vector<int> vis(n, false);
+        vector<bool> vis(n, false);
         vis[0] = true;
         
-        stack<int> st;
-        st.push(0);
+        queue<int> q;
+        q.push(0);
         
-        while(!st.empty())
+        
+        while(!q.empty())
         {
-            int curr = st.top();
-            st.pop();
+            auto node = q.front();
+            q.pop();
             
-            for(auto nei : rooms[curr])
+            for(auto it : rooms[node])
             {
-                if(!vis[nei])
+                if(!vis[it])
                 {
-                    vis[nei] = true;
-                    st.push(nei);
+                    q.push(it);
+                    vis[it] = true;
                 }
             }
+            
         }
         
         for(int i=0; i<n; i++)
         {
-            if(vis[i] == false)
-            {
-                return false;
-            }
+            if(!vis[i]) return false;
         }
-        
         return true;
         
     }
