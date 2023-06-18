@@ -22,7 +22,6 @@ public:
                 if(nums[i] == 0) 
                 {
                     ans[i] = product;
-            
                 }
             }
             else
