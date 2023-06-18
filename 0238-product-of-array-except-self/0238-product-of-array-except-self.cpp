@@ -20,7 +20,10 @@ public:
             if(zeroCount)
             {
                 if(nums[i] == 0) 
+                {
                     ans[i] = product;
+            
+                }
             }
             else
                 ans[i] = product/nums[i];
