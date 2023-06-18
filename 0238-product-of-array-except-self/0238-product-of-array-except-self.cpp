@@ -9,12 +9,11 @@ public:
             if(it == 0) zeroCount++;
             else product *= it;
         }
+        vector<int> ans(n, 0);
         if(zeroCount > 1)
         {
-            vector<int> ans(n, 0);
             return ans;
         }
-        vector<int> ans(n, 0);
         for(int i=0; i<n; i++)
         {
             if(zeroCount)
