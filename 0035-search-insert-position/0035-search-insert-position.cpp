@@ -5,7 +5,7 @@ public:
         int n = nums.size();
         int low = 0;
         int high = n - 1;
-        // int ans=n;
+        int ans;    
         while(low <= high)
         {
             int mid = (low + high)/2;
@@ -16,6 +16,7 @@ public:
             }
             else if(nums[mid] < target)
             {
+                ans = low;
                 low = mid + 1;
             }
             else
@@ -23,7 +24,8 @@ public:
                 high = mid - 1;
             }
         }
-        return high + 1;
+        // return high + 1;
+        return low;
         
     }
 };
