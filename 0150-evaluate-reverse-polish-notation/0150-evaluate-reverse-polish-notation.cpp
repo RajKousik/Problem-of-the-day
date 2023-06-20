@@ -69,7 +69,8 @@ public:
             }
             else
             {
-                st.push((long long)convertStrToNum(it));
+                st.push((long long)(stoi(it)));
+                // st.push((long long)convertStrToNum(it));
             }
         }
         
