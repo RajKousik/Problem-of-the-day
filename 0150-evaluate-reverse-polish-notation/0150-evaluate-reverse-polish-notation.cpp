@@ -12,12 +12,12 @@ public:
         
         int i=str.size()-1;
         int sum = 0;
-        int fact = 1; 
+        // int fact = 1;
+        reverse(str.begin(), str.end());
         while(i>=0)
         {
-            sum = (str[i]-'0')*fact + sum;
+           sum = (sum * 10) + (str[i]-'0');
             i--;
-            fact = fact * 10;
         }
         return isMinus ? -1*sum : sum;
     }
@@ -63,7 +63,6 @@ public:
                     else if(it == "/")
                     {
                         ans = a / b;
-                        cout<<a<<" "<<b<<" "<<ans;
                     }
                     st.push(ans);
                 }
