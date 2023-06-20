@@ -9,17 +9,14 @@
  * };
  */
 class Solution {
-public:
-    ListNode* reverseBetween(ListNode* head, int left, int right) {
-        ListNode *dummy = new ListNode(0), *temp = dummy;
-        dummy->next = head;
-        for (int i = 0; i < left - 1; i++){
-            temp = temp->next;
-        }
-        
-        ListNode* curr = temp->next;
-        ListNode* prev = NULL;
+private:
+    
+    ListNode* reverse(ListNode* head, int left, int right)
+    {
+
+        ListNode* curr = head;
         ListNode* currCopy = curr;
+        ListNode* prev = NULL;
         ListNode* nextNode;
         
         int times = right - left + 1;
@@ -30,9 +27,23 @@ public:
             prev = curr;
             curr = nextNode;
         }
-        
-        temp->next = prev;
         currCopy->next = nextNode;
+        return prev;
+    }
+    
+public:
+    ListNode* reverseBetween(ListNode* head, int left, int right) {
+        ListNode *dummy = new ListNode(0), *temp = dummy;
+        dummy->next = head;
+        
+        for (int i = 0; i < left - 1; i++){
+            temp = temp->next;
+        }
+        
+        
+        
+        temp->next = reverse(temp->next, left, right);
+        
         
         return dummy->next;
         
