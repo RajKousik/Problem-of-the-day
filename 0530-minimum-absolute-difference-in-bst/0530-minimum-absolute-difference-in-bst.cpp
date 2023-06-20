@@ -23,7 +23,7 @@ public:
         
         if(prev != NULL)
         {
-            mini = min(mini, root->val - prev->val);
+            mini = min(mini, abs(root->val - prev->val));
         }
         prev = root;
         
