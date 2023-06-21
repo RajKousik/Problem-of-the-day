@@ -17,7 +17,12 @@ private:
             //     k += (piles[i]/mid) + 1;
             // }
 
-            k += ((piles[i] + (mid - 1))/mid);  //this also gives ceil(piles[i]/mid)
+            // k += ((piles[i] + (mid - 1))/mid);  
+            //this also gives ceil(piles[i]/mid)
+            
+            // or use default function , but paramters should be passed as double
+            
+            k += ceil((double)piles[i]/(double)mid);
         }
         return k <= h;
     }
@@ -27,18 +32,18 @@ public:
     {
         
         int low = 1;
-        int high = h;
+        int high = INT_MIN;
         
         for(auto it : piles)
         {
             high = max(high, it);
         }
         
-        long long int ans;
+         int ans;
         
         while(low <= high)
         {
-            long long int mid = low + (high - low)/2;
+             int mid = low + (high - low)/2;
             
             if(isValid(piles, mid, h))
             {
