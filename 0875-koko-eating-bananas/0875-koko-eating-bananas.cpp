@@ -26,12 +26,12 @@ public:
     int minEatingSpeed(vector<int>& piles, int h)
     {
         
-        long long int low = 1;
-        long long int high = h;
+        int low = 1;
+        int high = h;
         
         for(auto it : piles)
         {
-            high = max(high, (long long)it);
+            high = max(high, it);
         }
         
         long long int ans;
