@@ -10,7 +10,7 @@ public:
         
         for(int diff = 0; diff < n; diff++)
         {
-            for(int i=0, j=i+diff; j < n; j++, i++)
+            for(int i=0, j=i+diff; i < n and j < n; j++, i++)
             {
                 
                 if(i == j)
