@@ -13,7 +13,7 @@ public:
             for(int i=0, j=i+diff; i < n and j < n; j++, i++)
             {
                 
-                if(i == j)
+                if(diff == 0)
                 {
                     dp[i][j] = 1;
                 }
