@@ -40,15 +40,18 @@ public:
                         quad[3] = nums[high];
                         res.push_back(quad);
                         
-                        while(low < high && nums[low]==quad[2])
+                        while(low+1 < high && nums[low]==nums[low+1])
                         {
                             low++;
                         }
                         
-                        while(low < high && nums[high]==quad[3])
+                        while(high - 1 > high && nums[high]==nums[high-1])
                         {
                             high--;
                         }
+                        
+                        low++;
+                        high--;
                         
                     }
                     
