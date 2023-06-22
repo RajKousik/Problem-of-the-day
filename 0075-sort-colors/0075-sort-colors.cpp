@@ -4,26 +4,23 @@ public:
         
         int n = nums.size();
         
-        int start = 0;
-        int mid = 0;
-        int end = n-1;
+        int leftPtr = 0;
+        int midPtr = 0;
+        int rightPtr = n-1;
         
-        while(mid <= end)
+        while(midPtr <= rightPtr)
         {
-            if(nums[mid] == 0)
+            if(nums[midPtr] == 0)
             {
-                swap(nums[start], nums[mid]);
-                start++;
-                mid++;
+                swap(nums[leftPtr++], nums[midPtr++]);
             }
-            else if(nums[mid] == 1)
+            else if(nums[midPtr] == 1)
             {
-                mid++;
+                midPtr++;
             }
             else
             {
-                swap(nums[mid], nums[end]);
-                end--;
+                swap(nums[midPtr], nums[rightPtr--]);
             }
         }
         
