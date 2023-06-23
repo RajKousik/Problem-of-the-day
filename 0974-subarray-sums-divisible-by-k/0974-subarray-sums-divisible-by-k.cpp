@@ -17,10 +17,10 @@ public:
             prefixSum = (prefixSum + num) % k;
             prefixSum = (prefixSum + k) % k;  //too handle negative numbers
             
-            if(umap.find(prefixSum) != umap.end())
-            {
+            // if(umap.find(prefixSum) != umap.end())
+            // {
                 ans += umap[prefixSum];
-            }
+            // }
             
             umap[prefixSum]++;
             
