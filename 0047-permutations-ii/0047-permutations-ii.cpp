@@ -10,7 +10,7 @@ class Solution {
         unordered_set<int> st;
         for(int i=index; i<nums.size(); i++)
         {
-            if(st.count(nums[i]) == 1) 
+            if(st.count(nums[i])) 
             {
                 continue;
             }
