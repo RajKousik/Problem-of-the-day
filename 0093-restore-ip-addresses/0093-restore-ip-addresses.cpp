@@ -11,7 +11,7 @@ public:
         {
             return false;
         }
-        if(temp.size() && stoi(temp) > 255)
+        if(stoi(temp) > 255)
         {
             return false;
         }
@@ -46,11 +46,9 @@ public:
     }
     
     vector<string> restoreIpAddresses(string s) {
-        
         vector<string> ans;
         string temp = "";
         func(0, 0, s, ans, temp);
         return ans;
-        
     }
 };
