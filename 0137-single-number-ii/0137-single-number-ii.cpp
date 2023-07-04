@@ -3,6 +3,7 @@ public:
     int singleNumber(vector<int>& nums) {
         
         int ans = 0, countOdd = 0, countEven = 0;
+        //building the ans, bit by bit
         
         for(int i=0; i<32; i++)
         {
@@ -21,6 +22,10 @@ public:
             if(countOdd % 3)
             {
                 ans = ans | (1 << i);   
+            }
+            else
+            {
+                ans = ans | (0 << i);
             }
         }
         return ans;
