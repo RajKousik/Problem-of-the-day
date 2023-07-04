@@ -42,6 +42,46 @@ public:
         
 //     }
     
+//        int minFallingPathSum(vector<vector<int>>& matrix) 
+//        {
+        
+//            int ans = 1e5;
+  
+//            int n = matrix.size();
+
+//            vector<vector<int>> dp(n, vector<int>(n, 0));
+
+//            for(int j=0; j<n; j++)
+//            {
+//                dp[n-1][j] = matrix[n-1][j];
+//            }
+           
+//            for(int row=n-2; row>=0; row--)
+//            {
+//                for(int col=n-1; col>=0; col--)
+//                {
+//                     int down = dp[row+1][col];
+                   
+//                     int downRight = 1e5;
+//                     if(col+1 < n)
+//                         downRight = dp[row+1][col+1];
+//                     int downLeft = 1e5;
+//                     if(col-1 >= 0)
+//                         downLeft = dp[row+1][col-1];
+
+//                     dp[row][col] = matrix[row][col] + min(down, min(downRight, downLeft));
+//                }
+//            }
+            
+//            for(int j=0; j<n; j++)
+//            {
+//                ans = min(ans, dp[0][j]);
+//            }
+           
+//            return ans;
+        
+//         }
+    
        int minFallingPathSum(vector<vector<int>>& matrix) 
        {
         
@@ -49,33 +89,35 @@ public:
   
            int n = matrix.size();
 
-           vector<vector<int>> dp(n, vector<int>(n, 0));
-
+           // vector<vector<int>> dp(n, vector<int>(n, 0));
+            vector<int> next(n), curr(n);
+            
            for(int j=0; j<n; j++)
            {
-               dp[n-1][j] = matrix[n-1][j];
+               next[j] = matrix[n-1][j];
            }
            
            for(int row=n-2; row>=0; row--)
            {
                for(int col=n-1; col>=0; col--)
                {
-                    int down = dp[row+1][col];
+                    int down = next[col];
                    
                     int downRight = 1e5;
                     if(col+1 < n)
-                        downRight = dp[row+1][col+1];
+                        downRight = next[col+1];
                     int downLeft = 1e5;
                     if(col-1 >= 0)
-                        downLeft = dp[row+1][col-1];
+                        downLeft = next[col-1];
 
-                    dp[row][col] = matrix[row][col] + min(down, min(downRight, downLeft));
+                    curr[col] = matrix[row][col] + min(down, min(downRight, downLeft));
                }
+               next = curr;
            }
             
            for(int j=0; j<n; j++)
            {
-               ans = min(ans, dp[0][j]);
+               ans = min(ans, next[j]);
            }
            
            return ans;
