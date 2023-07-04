@@ -1,74 +1,30 @@
 class Solution {
-public:
     
-    int solve(int i, int j, int n, vector<vector<int>> &triangle, vector<vector<int>> &dp)
+    int dfs(int row, int col, vector<vector<int>>& mat, int n, vector<vector<int>> &dp)
     {
-        if(i >= n)
+        if(row == n)
         {
             return 0;
         }
-        // if(i == n-1)
-        // {
-        //     return triangle[n-1][j];
-        // }
         
-        if(dp[i][j] != -1)
+        if(dp[row][col] != -1)
         {
-            return dp[i][j];
+            return dp[row][col];
         }
         
-        int down = triangle[i][j] + solve(i+1, j, n, triangle, dp);
-        int downRight = triangle[i][j] + solve(i+1, j+1, n, triangle, dp);
+        int down = dfs(row+1, col, mat, n, dp);
+        int downRight = dfs(row + 1, col + 1, mat, n, dp);
         
-        return dp[i][j] = min(down, downRight);
+        return dp[row][col] = mat[row][col] + min(down, downRight);
     }
     
-    int minimumTotal(vector<vector<int>>& triangle) {
-        int n = triangle.size();
-        vector<vector<int>> dp(n, vector<int> (n, -1));
-        return solve(0, 0, n, triangle, dp);
+public:
+    int minimumTotal(vector<vector<int>>& mat) {
+        
+        // int minSum = INT_MAX;
+        int n = mat.size();
+        vector<vector<int>> dp(n, vector<int>(n, -1));
+        return dfs(0, 0, mat, n, dp);
+        
     }
-    
-//     int minimumTotal(vector<vector<int>>& triangle) {
-//         int n = triangle.size();
-//         vector<vector<int>> dp(n, vector<int> (n, 0));
-        
-//         for(int i=0; i<n; i++)
-//         {
-//             dp[n-1][i] = triangle[n-1][i];
-//         }
-//         for(int i=n-2; i>=0; i--)
-//         {
-//             for(int j=i; j>=0; j--)
-//             {
-//                 int down = triangle[i][j] + dp[i+1][j];
-//                 int downRight = triangle[i][j] + dp[i+1][j+1];
-//                 dp[i][j] = min(down, downRight);
-//             }
-//         }
-//         return dp[0][0];
-//     }
-    
-//     int minimumTotal(vector<vector<int>>& triangle) {
-//         int n = triangle.size();
-        
-//         vector<int> next(n,0);
-        
-//         for(int i=0; i<n; i++)
-//         {
-//             next[i] = triangle[n-1][i];
-//         }
-//         for(int i=n-2; i>=0; i--)
-//         {
-//             vector<int> curr(n,0);
-//             for(int j=i; j>=0; j--)
-//             {
-//                 int down = triangle[i][j] + next[j];
-//                 int downRight = triangle[i][j] + next[j+1];
-//                 curr[j] = min(down, downRight);
-//             }
-//             next = curr;
-//         }
-//         return next[0];
-//     }
 };
