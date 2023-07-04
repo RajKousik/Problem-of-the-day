@@ -43,41 +43,80 @@ public:
 //         return ans;
 //     }
     
-        int minFallingPathSum(vector<vector<int>>& grid) {
+//         int minFallingPathSum(vector<vector<int>>& grid) {
         
-            int n = grid.size();
+//             int n = grid.size();
 
-            int ans = INT_MAX;
+//             int ans = INT_MAX;
             
-            vector<vector<int>> dp(n, vector<int>(n, 0));
-            for(int col=0; col<n; col++)
-            {
-                  dp[n-1][col] = grid[n-1][col];
-            }
+//             vector<vector<int>> dp(n, vector<int>(n, 0));
+//             for(int col=0; col<n; col++)
+//             {
+//                   dp[n-1][col] = grid[n-1][col];
+//             }
             
-            for(int row=n-2; row>=0; row--)
-            {
-                for(int col=n-1; col>=0; col--)
-                {
-                    int ans = 1e6;
-                    for(int nextCol = 0; nextCol < n; nextCol++)
-                    {
-                        if(col != nextCol)
-                        {
-                            ans = min(ans, dp[row+1][nextCol]);
-                        }
-                    }
-                    dp[row][col] = grid[row][col] + ans;
-                }
-            }
+//             for(int row=n-2; row>=0; row--)
+//             {
+//                 for(int col=n-1; col>=0; col--)
+//                 {
+//                     int ans = 1e6;
+//                     for(int nextCol = 0; nextCol < n; nextCol++)
+//                     {
+//                         if(col != nextCol)
+//                         {
+//                             ans = min(ans, dp[row+1][nextCol]);
+//                         }
+//                     }
+//                     dp[row][col] = grid[row][col] + ans;
+//                 }
+//             }
             
-            for(int col=0; col<n; col++)
-            {
-                  ans = min(ans, dp[0][col]);
-            }
+//             for(int col=0; col<n; col++)
+//             {
+//                   ans = min(ans, dp[0][col]);
+//             }
             
-            return ans;
+//             return ans;
             
+//         }
+    
+    int minFallingPathSum(vector<vector<int>>& grid) 
+    {
+        
+        int n = grid.size();
+
+        int ans = INT_MAX;
+
+        vector<int> nextRow(n), currRow(n);
+        for(int col=0; col<n; col++)
+        {
+              nextRow[col] = grid[n-1][col];
         }
+
+        for(int row=n-2; row>=0; row--)
+        {
+            for(int col=n-1; col>=0; col--)
+            {
+                int ans = 1e6;
+                for(int nextCol = 0; nextCol < n; nextCol++)
+                {
+                    if(col != nextCol)
+                    {
+                        ans = min(ans, nextRow[nextCol]);
+                    }
+                }
+                currRow[col] = grid[row][col] + ans;
+            }
+            nextRow = currRow;
+        }
+
+        for(int col=0; col<n; col++)
+        {
+              ans = min(ans, nextRow[col]);
+        }
+
+        return ans;
+
+    }
     
 };
