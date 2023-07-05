@@ -2,29 +2,30 @@ class Solution {
 public:
     int longestSubarray(vector<int>& nums) {
         
-        int n = nums.size();
-        int maxi = 0;
-        int right=0, left = 0;
-        
+        int maxLength = 0;
+        int rightPtr = 0, leftPtr = 0;
         int zeroCount = 0;
-        
-        while(right < n)
+        // unordered_map<int, int> umap;
+        int n = nums.size();
+        while(rightPtr < n)
         {
-            if(nums[right] == 0)
-            {
+            if(nums[rightPtr] == 0)
                 zeroCount++;
-            }
+            
             while(zeroCount > 1)
             {
-                if(nums[left] == 0)
+                if(nums[leftPtr] == 0)
                 {
                     zeroCount--;
                 }
-                left++;
+                leftPtr++;
             }
-            maxi = max(maxi, right - left + 1);
-            right++;
+            
+            maxLength = max(maxLength, rightPtr - leftPtr + 1);
+            rightPtr++;
+            
         }
-        return maxi-1;
+        
+        return maxLength - 1;
     }
 };
