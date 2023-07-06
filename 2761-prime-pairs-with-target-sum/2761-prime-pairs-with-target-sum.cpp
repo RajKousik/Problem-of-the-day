@@ -16,36 +16,43 @@ public:
                 }
             }
         }
+
         
-        // for(int i=0; i<=n; i++)
-        // {
-        //     cout<<i<<isPrime[i]<<endl;
-        // }
-        
-        int i=2, j=n;
         vector<vector<int>> ans;
         
-        while(i <= j)
+        
+        for(int i=2; i<=n/2; i++)
         {
-            int sum = i + j;
-            if(isPrime[i] and isPrime[j] and sum == n)
+            int complement = n - i;
+            if(isPrime[i] and isPrime[complement])
             {
-                ans.push_back({i, j});
-                i++, j--;
-            }
-            else if(sum < n)
-            {
-                i++;
-            }
-            else if(sum > n)
-            {
-                j--;
-            }
-            else
-            {
-                i++, j--;
+                ans.push_back({i, complement});
             }
         }
+        
+        
+//         int i=2, j=n;        
+//         while(i <= j)
+//         {
+//             int sum = i + j;
+//             if(isPrime[i] and isPrime[j] and sum == n)
+//             {
+//                 ans.push_back({i, j});
+//                 i++, j--;
+//             }
+//             else if(sum < n)
+//             {
+//                 i++;
+//             }
+//             else if(sum > n)
+//             {
+//                 j--;
+//             }
+//             else
+//             {
+//                 i++, j--;
+//             }
+//         }
         
         return ans;
     }
