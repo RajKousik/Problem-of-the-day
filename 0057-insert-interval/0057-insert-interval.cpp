@@ -1,11 +1,10 @@
 class Solution {
 private:
     bool isOverlapping(vector<int> &a, vector<int> &b) {
-        // return min(a[1],b[1]) - max(a[0],b[0]) >= 0;
         return b[0] <= a[1];
     }
     vector<int> mergeIntervals(vector<int> &a, vector<int> &b) {
-        return {min(a[0], b[0]), max(a[1], b[1])};
+        return { a[0], max(a[1], b[1]) };
     }
     void insertInterval(vector<vector<int>>& intervals, vector<int>& newInterval) {   
         auto index = upper_bound(intervals.begin(), intervals.end(), newInterval) - intervals.begin(); 
