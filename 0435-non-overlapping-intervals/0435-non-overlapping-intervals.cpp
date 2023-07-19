@@ -7,17 +7,14 @@ public:
     }
     
     int eraseOverlapIntervals(vector<vector<int>>& intervals) {
-        
+        int n = intervals.size();
         int ans = 0;
         
         sort(intervals.begin(),intervals.end(), comp);
-        
         vector<int> temp = intervals[0];
-        int n = intervals.size();
         
         for(int i=1; i<n; i++)
         {
-            
             if(intervals[i][0] < temp[1])
             {
                 ans++;
@@ -25,11 +22,8 @@ public:
             else
             {
                 temp = intervals[i];
-            }
-            
+            }   
         }
-        
         return ans;
-        
     }
 };
