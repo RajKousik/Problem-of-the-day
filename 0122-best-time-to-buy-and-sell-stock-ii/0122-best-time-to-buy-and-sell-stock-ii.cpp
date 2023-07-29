@@ -6,32 +6,23 @@ public:
         */
     
         int maxProfit(vector<int>& prices) 
-        {
-            
+        {    
             int i=0, n=prices.size();
-            int buyingPrice, sellingPrice, netProfit = 0;
-            
+            int buyingPrice, sellingPrice, netProfit = 0;   
             for(int i=0; i<n; i++)
             {
-                
                 while(i+1 < n and prices[i+1] <= prices[i])
                 {
                     i++;
-                }
-                
+                }   
                 buyingPrice = prices[i];
-                
-                while(i+1 < n and prices[i+1] > prices[i])
+                while(i+1 < n and prices[i+1] >= prices[i])
                 {
                     i++;
                 }
-                
                 sellingPrice = prices[i];
-                
                 netProfit += (sellingPrice - buyingPrice);
             }
-            
-            
             return netProfit;
         }
         
