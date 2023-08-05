@@ -21,10 +21,10 @@ public:
             return ans;
         }
         
-        // if(umap.find({start, end}) != umap.end())
-        // {
-        //     return umap[{start, end}];
-        // }
+        if(umap.find(make_pair(start,end)) != umap.end())
+        {
+            return umap[make_pair(start,end)];
+        }
         
         for(int i=start; i<=end; i++)
         {
@@ -42,7 +42,7 @@ public:
             
         }
         
-        return umap[{start, end}] = ans;
+        return umap[make_pair(start,end)] = ans;
         
     }
     
