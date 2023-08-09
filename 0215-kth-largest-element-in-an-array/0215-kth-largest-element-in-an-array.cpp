@@ -64,8 +64,44 @@ public:
         
 //         return pq.top();
         
-        return quickSelect(nums, k);
-            
+        // return quickSelect(nums, k);  // TC : BC: O(N) WC : O(N^2)
+        return countAlgorithm(nums, k);  //TC : O( N + (max - min + 1)) //O(N+M) , M = (max - min + 1)
         
     }
+    
+    int countAlgorithm(vector<int> &nums, int k)
+    {
+        
+        int mini = INT_MAX;
+        int maxi = INT_MIN;
+        
+        for(int num : nums)
+        {
+            mini = min(mini, num);
+            maxi = max(maxi, num);
+        }
+        
+        vector<int> count(maxi - mini + 1);
+        
+        for(int num : nums)
+        {
+            count[num - mini]++;
+        }
+        
+        int remain = k;
+        for(int val = count.size()-1; val >= 0; val--)
+        {
+            remain -= count[val];
+            if(remain <= 0)
+            {
+                return val + mini;
+            }
+        }
+        return -1;
+        
+        
+        
+        
+    }
+    
 };
