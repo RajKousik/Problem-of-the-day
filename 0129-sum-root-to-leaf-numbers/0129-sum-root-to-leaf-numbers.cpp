@@ -9,28 +9,34 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-class Solution 
-{
-private:
-    int helper(TreeNode* root, int val)
+class Solution {
+public:
+    
+    int getSumOfNumbers(TreeNode* root, int sum)
     {
-        if(!root->left and !root->right)
-            return val;
+        if(!root)
+        {
+            return 0;
+        }
         
-        int sum = (val * 10);
+        if(root->left == NULL and root->right == NULL)
+        {
+            return (sum * 10) + root->val;
+        }
         
-        int left = 0, right = 0;
-        if(root->left)
-            left =  helper(root->left, sum + root->left->val);
-        if(root->right)
-            right = helper(root->right, sum + root->right->val);
+        int left = getSumOfNumbers(root->left, (sum * 10) + root->val);
+        int right = getSumOfNumbers(root->right, (sum * 10) + root->val);
         
         return left + right;
+        
     }
     
-public:
-    int sumNumbers(TreeNode* root)
-    {
-        return helper(root, root->val);    
+    int sumNumbers(TreeNode* root) {
+        
+        if(!root)
+            return 0;
+        
+        return getSumOfNumbers(root, 0);
+        
     }
 };
