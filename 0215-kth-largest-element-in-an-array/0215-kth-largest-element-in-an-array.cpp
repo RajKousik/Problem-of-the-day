@@ -71,23 +71,18 @@ public:
     
     int countAlgorithm(vector<int> &nums, int k)
     {
-        
         int mini = INT_MAX;
         int maxi = INT_MIN;
-        
         for(int num : nums)
         {
             mini = min(mini, num);
             maxi = max(maxi, num);
         }
-        
         vector<int> count(maxi - mini + 1);
-        
         for(int num : nums)
         {
             count[num - mini]++;
         }
-        
         int remain = k;
         for(int val = count.size()-1; val >= 0; val--)
         {
@@ -98,10 +93,6 @@ public:
             }
         }
         return -1;
-        
-        
-        
-        
     }
     
 };
